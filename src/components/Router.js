@@ -14,14 +14,23 @@ const AppRouter=({isLoggedIn,userObj,refreshUser}) =>{
             {isLoggedIn && <Navigation userObj={userObj}/>}
             <Switch>
                 {isLoggedIn ? (//로그인 했을 때  (userobj={userObj} -> 그 태그에 userObj 객체를 전달 )
-                    <>
+                    <div
+                        style={{
+                            maxWidth: 890,
+                            width: "100%",
+                            margin: "0 auto",
+                            marginTop: 80,
+                            display: "flex",
+                            justifyContent: "center",
+                        }}
+                    >
                         <Route exact path="/">
                             <Home userObj={userObj}/>
                         </Route>
                         <Route exact path="/profile">
                             <Profile userObj={userObj} refreshUser={refreshUser}/>
                         </Route>
-                    </>
+                    </div>
                     ):( //로그인하지 않았을 때 (로그아웃도 해당 )
                   
                         <>

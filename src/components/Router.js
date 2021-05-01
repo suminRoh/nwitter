@@ -7,19 +7,19 @@ import Navigation from "components/Navigation";
 
 
 
-const AppRouter=({isLoggedIn}) =>{
+const AppRouter=({isLoggedIn,userObj,refreshUser}) =>{
     
     return(
         <Router>
-            {isLoggedIn && <Navigation />}
+            {isLoggedIn && <Navigation userObj={userObj}/>}
             <Switch>
-                {isLoggedIn ? (//로그인 했을 때
+                {isLoggedIn ? (//로그인 했을 때  (userobj={userObj} -> 그 태그에 userObj 객체를 전달 )
                     <>
                         <Route exact path="/">
-                            <Home />
+                            <Home userObj={userObj}/>
                         </Route>
                         <Route exact path="/profile">
-                            <Profile />
+                            <Profile userObj={userObj} refreshUser={refreshUser}/>
                         </Route>
                     </>
                     ):( //로그인하지 않았을 때 (로그아웃도 해당 )
